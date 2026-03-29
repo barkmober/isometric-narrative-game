@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1025333024669167402}
+  - component: {fileID: 7521185270968405176}
   m_Layer: 0
   m_Name: Player Camera Manager
   m_TagString: Untagged
@@ -64,6 +65,18 @@ Transform:
   - {fileID: 6225638790755898407}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7521185270968405176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6425921708749064107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77bf2284ed394904e82d0535c005005e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8362016688748060231
 GameObject:
   m_ObjectHideFlags: 0

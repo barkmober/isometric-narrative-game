@@ -478,6 +478,7 @@ GameObject:
   - component: {fileID: 4928614986530354029}
   - component: {fileID: 5998078948685086762}
   - component: {fileID: 6559335048149097437}
+  - component: {fileID: 8939442088196426281}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1084,6 +1085,25 @@ MonoBehaviour:
   LegsAnimatorBlend: 1
   _Editor_DefaultModuleOnStart: {fileID: 11400000, guid: 7d9bd86d54a7a594cb1793f9533e2e00, type: 2}
   _Editor_LegHelperModule: {fileID: 11400000, guid: 0645fbea8059aec47aa6ae9d2c93c1d4, type: 2}
+--- !u!114 &8939442088196426281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796264627696958213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb867a348dd80be4e81d5461508ab2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+  animator: {fileID: 0}
+  isPerformingAction: 0
+  applyRootMotion: 0
+  canMove: 1
+  canRotate: 1
+  isMoving: 0
 --- !u!1 &907195245766761231
 GameObject:
   m_ObjectHideFlags: 0

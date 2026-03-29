@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 8908941211192701461}
   - component: {fileID: 6993715077148739730}
   - component: {fileID: 217576421932185380}
+  - component: {fileID: 2592472004380665668}
   m_Layer: 5
   m_Name: Player UI Manager
   m_TagString: Untagged
@@ -187,3 +188,16 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2592472004380665668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3744433300183861539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ea90ac50987ecc4cba5d127b9e30222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUICanvasGroup: {fileID: 217576421932185380}
