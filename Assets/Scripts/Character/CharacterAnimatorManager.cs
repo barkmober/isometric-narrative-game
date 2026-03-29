@@ -2,14 +2,9 @@ using UnityEngine;
 
 namespace SA
 {
-    public class CharacterLocomotionManager : MonoBehaviour
+    public class CharacterAnimatorManager : MonoBehaviour
     {
         CharacterManager character;
-
-        [Header("Movement Stats")]
-        [SerializeField] protected float walkingSpeed = 2.5f;
-        [SerializeField] protected float runningSpeed = 3.5f;
-        [SerializeField] protected float rotationSpeed = 7f;
 
         protected virtual void Awake()
         {

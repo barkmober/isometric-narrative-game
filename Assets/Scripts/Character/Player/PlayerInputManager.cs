@@ -16,9 +16,9 @@ namespace SA
 
         [Header("INPUTS")]
         [SerializeField] Vector2 movementInput;
-        [SerializeField] float moveAmount = 0; //ABS VALUE FOR ANIMATION
-        [SerializeField] float verticalMovement;
-        [SerializeField] float horizontalMovement;
+        public float moveAmount = 0; //ABS VALUE FOR ANIMATION
+        public float verticalMovement;
+        public float horizontalMovement;
 
         [SerializeField] bool interactInput;
 
@@ -35,6 +35,18 @@ namespace SA
 
             DontDestroyOnLoad(gameObject);
             SceneManager.activeSceneChanged += OnSceneChange;
+        }
+
+        private void OnApplicationFocus(bool focus)
+        {
+            if(focus)
+            {
+                playerControls.Enable();
+            }
+            else
+            {
+                playerControls.Disable();
+            }
         }
 
         private void OnSceneChange(Scene oldScene, Scene newScene)
@@ -92,7 +104,19 @@ namespace SA
 
         private void HandleMovementInput()
         {
+            verticalMovement = movementInput.y;
+            horizontalMovement = movementInput.x;
 
+            moveAmount = Mathf.Clamp01(Mathf.Abs(verticalMovement) + Mathf.Abs(horizontalMovement));
+
+            if (moveAmount <= 0.5f && moveAmount > 0)
+            {
+                moveAmount = 0.5f;
+            }
+            else if (moveAmount > 0.5f && moveAmount <= 0)
+            {
+                moveAmount = 1;
+            }
         }
 
         private void HandleInteractionInput()

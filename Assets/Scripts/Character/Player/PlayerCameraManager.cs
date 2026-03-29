@@ -6,6 +6,10 @@ namespace SA
     {
         public static PlayerCameraManager instance;
 
+        [Header("Camera Transforms")]
+        public Transform cameraPivot;
+        public Camera camera;
+
         private void Awake()
         {
             if (instance == null)
