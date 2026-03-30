@@ -9,8 +9,24 @@ namespace SA
     {
         public static WorldSaveGameManager instance;
 
+        public PlayerManager player;
+
+        [Header("WORLD")]
         [SerializeField] int worldSceneIndex = 1;
         [SerializeField] Vector3 spawnPoint;
+
+        [Header("DEBUG")]
+        [SerializeField] bool saveGame;
+        [SerializeField] bool loadGame;
+
+        [Header("SAVE DATA WRITER")]
+        private SaveFileDataWriter saveFileDataWriter;
+
+        [Header("GAME SAVING")]
+        public CharacterSaveData currentCharacterData;
+        public bool hasSaveFile = false;
+        public CharacterSaveData characterSlot;
+        public string fileName;
 
         private void Awake()
         {
@@ -26,16 +42,85 @@ namespace SA
             DontDestroyOnLoad(gameObject);
         }
 
-        public IEnumerator LoadNewGame()
+        private void Start()
+        {
+            LoadCharacterProfile();
+        }
+
+        private void Update()
+        {
+            if (saveGame)
+            {
+                saveGame = false;
+                SaveGame();
+            }
+
+            if (loadGame)
+            {
+                loadGame = false;
+                LoadGame();
+            }
+        }
+
+        public IEnumerator LoadWorldScene()
         {
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
 
             PlayerUIManager.instance.EnablePlayerUI();
 
             GameObject player = Instantiate(PlayerInputManager.instance.playerPrefab, spawnPoint, Quaternion.identity);
+
+            instance.player = player.GetComponent<PlayerManager>();
             PlayerInputManager.instance.player = player.GetComponent<PlayerManager>();
+            PlayerCameraManager.instance.player = player.GetComponent<PlayerManager>();
+
+            instance.player.LoadGameDataToCharacter(ref currentCharacterData);
+            SaveGame();
 
             yield return null;
+        }
+
+        public void CreateNewGame()
+        {
+            fileName = "characterSave01";
+
+            currentCharacterData = new CharacterSaveData();
+        }
+
+        public void SaveGame()
+        {
+            fileName = "characterSave01";
+
+            saveFileDataWriter = new SaveFileDataWriter();
+
+            saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveFileDataWriter.saveFileName = fileName;
+
+            player.SaveGameDataToCharacter(ref currentCharacterData);
+
+            saveFileDataWriter.CreateNewCharacterSaveFile(currentCharacterData);
+        }
+
+        public void LoadGame()
+        {
+            fileName = "characterSave01";
+
+            saveFileDataWriter = new SaveFileDataWriter();
+
+            saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveFileDataWriter.saveFileName = fileName;
+            currentCharacterData = saveFileDataWriter.LoadSaveFile();
+
+            StartCoroutine(LoadWorldScene());
+        }
+
+        public void LoadCharacterProfile()
+        {
+            saveFileDataWriter = new SaveFileDataWriter();
+            saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+
+            saveFileDataWriter.saveFileName = "characterSave01";
+            characterSlot = saveFileDataWriter.LoadSaveFile();
         }
 
         public int GetWorldSceneIndex()

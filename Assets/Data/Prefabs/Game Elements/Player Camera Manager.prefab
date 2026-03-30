@@ -79,6 +79,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPivot: {fileID: 6225638790755898407}
   camera: {fileID: 5884838393844993091}
+  smoothTime: 0.5
+  followTargetOffset: {x: 0, y: 0, z: 1.5}
+  player: {fileID: 0}
 --- !u!1 &8362016688748060231
 GameObject:
   m_ObjectHideFlags: 0

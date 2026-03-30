@@ -21,6 +21,7 @@ namespace SA
         public float horizontalMovement;
 
         [SerializeField] bool interactInput;
+        [SerializeField] bool sprint_Input;
 
         private void Awake()
         {
@@ -34,7 +35,6 @@ namespace SA
             }
 
             DontDestroyOnLoad(gameObject);
-            SceneManager.activeSceneChanged += OnSceneChange;
         }
 
         private void OnApplicationFocus(bool focus)
@@ -73,6 +73,9 @@ namespace SA
                 playerControls = new PlayerControls();
 
                 playerControls.Movement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+
+                playerControls.Movement.Sprint.performed += i => sprint_Input = true;
+                playerControls.Movement.Sprint.canceled += i => sprint_Input = false;
             }
 
             playerControls.Enable();
@@ -88,6 +91,8 @@ namespace SA
 
         private void Start()
         {
+            SceneManager.activeSceneChanged += OnSceneChange;
+
             instance.enabled = false;
         }
 
@@ -99,6 +104,8 @@ namespace SA
         private void HandleInputs()
         {
             HandleMovementInput();
+            HandleSprintInput();
+
             HandleInteractionInput();
         }
 
@@ -116,6 +123,34 @@ namespace SA
             else if (moveAmount > 0.5f && moveAmount <= 0)
             {
                 moveAmount = 1;
+            }
+
+            if (moveAmount > 0.1 && player.canMove)
+            {
+                player.isMoving = true;
+            }
+            else
+            {
+                player.isMoving = false;
+            }
+        }
+
+        private void HandleSprintInput()
+        {
+            if (sprint_Input && player.isMoving && player.isGrounded)
+            {
+                if (player.canMove && !player.isPerformingAction && !player.hasWallInFront)
+                {
+                    player.isSprinting = true;
+                }
+                else
+                {
+                    player.isSprinting = false;
+                }
+            }
+            else
+            {
+                player.isSprinting = false;
             }
         }
 

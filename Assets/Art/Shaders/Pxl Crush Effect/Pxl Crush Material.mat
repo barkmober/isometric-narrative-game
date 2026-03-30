@@ -51,7 +51,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0.5
     - _ColorMask: 15
-    - _Dither_Opacity: 0.05
+    - _Dither_Opacity: 0.025
     - _Quantization_Level: 32
     - _Saturation_Layers: 5
     - _Stencil: 0

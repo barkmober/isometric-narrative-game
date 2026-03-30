@@ -7,17 +7,28 @@ namespace SA
         [HideInInspector] public CharacterController characterController;
         [HideInInspector] public Animator animator;
 
+        [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
+        [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
+
         [Header("FLAGS")]
         public bool isPerformingAction = false;
         public bool applyRootMotion = false;
+        public bool hasWallInFront = false;
+
         public bool canMove = true;
         public bool canRotate = true;
+
+        public bool isGrounded = false;
         public bool isMoving = false;
+        public bool isSprinting = false;
 
         protected virtual void Awake()
         {
             characterController = GetComponent<CharacterController>();
             animator = GetComponent<Animator>();
+
+            characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
+            characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
         }
 
         protected virtual void Start()

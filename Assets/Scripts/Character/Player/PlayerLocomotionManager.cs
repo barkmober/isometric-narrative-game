@@ -18,8 +18,42 @@ namespace SA
 
         public void HandleAllMovement()
         {
+            CalculateSpeed();
+
             HandleGroundedMovement();
             HandleRotation();
+        }
+
+        private void CalculateSpeed()
+        {
+            float maxSpeed = maxWalkingSpeed;
+
+            if (!player.isGrounded)
+            {
+                maxSpeed = maxAerialSpeed;
+            }
+            else
+            {
+                if (player.isSprinting)
+                {
+                    maxSpeed = maxRunningSpeed;
+                }
+                else
+                {
+                    maxSpeed = maxWalkingSpeed;
+                }
+            }
+
+            if (!player.isMoving && currentSpeed > 0)
+            {
+                currentSpeed -= decelerationFactor * Time.deltaTime;
+            }
+            else if (player.isMoving && currentSpeed < maxSpeed) 
+            {
+                currentSpeed += accelerationFactor * Time.deltaTime;
+            }
+
+            currentSpeed = Mathf.Clamp(currentSpeed, 0, maxSpeed);
         }
 
         private void HandleGroundedMovement()
@@ -32,7 +66,8 @@ namespace SA
             moveDirection.Normalize();
             moveDirection.y = 0;
 
-            player.characterController.Move(moveDirection * walkingSpeed * Time.deltaTime);
+            player.characterController.Move(moveDirection * currentSpeed * Time.deltaTime);
+            player.playerAnimatorManager.SetMovementValues(PlayerInputManager.instance.moveAmount);
         }
 
         private void HandleRotation()

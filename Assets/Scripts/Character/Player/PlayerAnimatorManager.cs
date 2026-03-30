@@ -22,5 +22,18 @@ namespace SA
         {
             base.Update();
         }
+
+        protected override void OnAnimatorMove()
+        {
+            if (player.applyRootMotion)
+            {
+                if (!player.characterController.enabled)
+                    return;
+
+                Vector3 velocity = player.animator.deltaPosition;
+                player.characterController.Move(velocity);
+                player.transform.rotation *= player.animator.deltaRotation;
+            }
+        }
     }
 }

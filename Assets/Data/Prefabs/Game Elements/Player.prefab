@@ -477,10 +477,10 @@ GameObject:
   - component: {fileID: 7602920742643466522}
   - component: {fileID: 4928614986530354029}
   - component: {fileID: 5998078948685086762}
-  - component: {fileID: 6559335048149097437}
   - component: {fileID: 8939442088196426281}
   - component: {fileID: 8548358616556530893}
   - component: {fileID: 3327307867227481625}
+  - component: {fileID: -6744007290323073355}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -550,13 +550,79 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.85
-  m_Radius: 0.25
+  m_Radius: 0.23
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &6559335048149097437
+--- !u!114 &8939442088196426281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796264627696958213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb867a348dd80be4e81d5461508ab2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterController: {fileID: 0}
+  animator: {fileID: 0}
+  characterLocomotionManager: {fileID: 0}
+  characterAnimatorManager: {fileID: 0}
+  isPerformingAction: 0
+  applyRootMotion: 0
+  hasWallInFront: 0
+  canMove: 1
+  canRotate: 1
+  isGrounded: 1
+  isMoving: 0
+  isSprinting: 0
+  playerLocomotionManager: {fileID: 0}
+  playerAnimatorManager: {fileID: 0}
+--- !u!114 &8548358616556530893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796264627696958213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d940014a8c83864e8ec8cecd26240ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAerialSpeed: 1.85
+  maxWalkingSpeed: 2.25
+  maxRunningSpeed: 4.5
+  rotationSpeed: 7
+  accelerationFactor: 7
+  decelerationFactor: 10
+  currentSpeed: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  gravityForce: -25
+  clampedGravityForce: -45
+  groundedYVelocity: -20
+  fallStartYVelocity: -5
+  groundCheckSphereRadius: 0.2
+  inAirTimer: 0
+--- !u!114 &3327307867227481625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 796264627696958213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb02da615597be429fb4a23cd741e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-6744007290323073355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -605,7 +671,7 @@ MonoBehaviour:
   DisableCustomModules: 0
   CustomModules:
   - Enabled: 1
-    Parent: {fileID: 6559335048149097437}
+    Parent: {fileID: -6744007290323073355}
     ModuleReference: {fileID: 11400000, guid: 7d9bd86d54a7a594cb1793f9533e2e00, type: 2}
     customStringList: []
     customObjectList: []
@@ -757,38 +823,7 @@ MonoBehaviour:
     G_CustomForceNOTDetach: 0
     G_CustomForceDetach: 0
     G_CustomForceNOTAttach: 0
-    Owner: {fileID: 6559335048149097437}
-    LegBlendWeight: 1
-    LegMoveSpeedMultiplier: 1
-    LegRaiseMultiplier: 1
-    GlueThresholdMultiplier: 1
-    GluePointOffset: {x: 0, y: 0}
-    LegStretchMultiplier: 1
-    CustomLegAnimating: {fileID: 0}
-    FootPitchOffset: 0
-    BoneStart: {fileID: 7882167300541560720}
-    BoneMid: {fileID: 7807076165871673924}
-    BoneEnd: {fileID: 8879395646524673898}
-    Side: 1
-    OppositeLegIndex: -1
-    RaycastPrecision: 0
-    UseFeet: 0
-    BoneFeet: {fileID: 0}
-    FeetSensitivity: 0.5
-    InverseHint: 0
-    AnkleToHeel: {x: 0.0000302158, y: 0.00079462555, z: -0.0009194747}
-    AnkleToFeetEnd: {x: 0.000005549293, y: 0.0017497049, z: -0.00009489212}
-    AnkleRight: {x: -0.99950004, y: 0.001456447, z: -0.031586774}
-    AnkleUp: {x: -0.024855874, y: -0.6536685, z: 0.7563729}
-    AnkleForward: {x: -0.019545346, y: 0.7567797, z: 0.6533779}
-    FootMiddlePosition: 0.5
-    AnkleYawCorrection: 0
-    _FinalIKPos: {x: 0, y: 0, z: 0}
-  - G_CustomForceAttach: 0
-    G_CustomForceNOTDetach: 0
-    G_CustomForceDetach: 0
-    G_CustomForceNOTAttach: 0
-    Owner: {fileID: 6559335048149097437}
+    Owner: {fileID: -6744007290323073355}
     LegBlendWeight: 1
     LegMoveSpeedMultiplier: 1
     LegRaiseMultiplier: 1
@@ -801,7 +836,7 @@ MonoBehaviour:
     BoneMid: {fileID: 1089209503246174065}
     BoneEnd: {fileID: 1456942380048226521}
     Side: 2
-    OppositeLegIndex: -1
+    OppositeLegIndex: 1
     RaycastPrecision: 0
     UseFeet: 0
     BoneFeet: {fileID: 0}
@@ -812,6 +847,37 @@ MonoBehaviour:
     AnkleRight: {x: -0.9995, y: -0.0014532097, z: 0.03159146}
     AnkleUp: {x: 0.024857327, y: -0.6536642, z: 0.7563763}
     AnkleForward: {x: 0.01955103, y: 0.7567832, z: 0.6533735}
+    FootMiddlePosition: 0.5
+    AnkleYawCorrection: 0
+    _FinalIKPos: {x: 0, y: 0, z: 0}
+  - G_CustomForceAttach: 0
+    G_CustomForceNOTDetach: 0
+    G_CustomForceDetach: 0
+    G_CustomForceNOTAttach: 0
+    Owner: {fileID: -6744007290323073355}
+    LegBlendWeight: 1
+    LegMoveSpeedMultiplier: 1
+    LegRaiseMultiplier: 1
+    GlueThresholdMultiplier: 1
+    GluePointOffset: {x: 0, y: 0}
+    LegStretchMultiplier: 1
+    CustomLegAnimating: {fileID: 0}
+    FootPitchOffset: 0
+    BoneStart: {fileID: 7882167300541560720}
+    BoneMid: {fileID: 7807076165871673924}
+    BoneEnd: {fileID: 8879395646524673898}
+    Side: 1
+    OppositeLegIndex: 0
+    RaycastPrecision: 0
+    UseFeet: 0
+    BoneFeet: {fileID: 0}
+    FeetSensitivity: 0.5
+    InverseHint: 0
+    AnkleToHeel: {x: 0.0000302158, y: 0.00079462555, z: -0.0009194747}
+    AnkleToFeetEnd: {x: 0.000005549293, y: 0.0017497049, z: -0.00009489212}
+    AnkleRight: {x: -0.99950004, y: 0.001456447, z: -0.031586774}
+    AnkleUp: {x: -0.024855874, y: -0.6536685, z: 0.7563729}
+    AnkleForward: {x: -0.019545346, y: 0.7567797, z: 0.6533779}
     FootMiddlePosition: 0.5
     AnkleYawCorrection: 0
     _FinalIKPos: {x: 0, y: 0, z: 0}
@@ -1015,7 +1081,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     DoStepAnimationOnDistanceFactor: 0.055
-  UseGluing: 1
+  UseGluing: 0
   MainGlueBlend: 1
   GlueRangeThreshold: 0.5
   GlueFadeInSpeed: 0.85
@@ -1025,21 +1091,21 @@ MonoBehaviour:
   AllowGlueDrag: 0.6
   GlueMode: 2
   OnlyLocalAnimation: 0
-  SmoothSuddenSteps: 0.5
-  LegElevateBlend: 0.6
+  SmoothSuddenSteps: 1
+  LegElevateBlend: 2
   LegElevateHeightLimit: 0.6
   FootRotationBlend: 1
   FootAlignRapidity: 0.75
-  AnimateFeet: 1
+  AnimateFeet: 0
   LimitFeetYaw: 30
   AnimationFloorLevel: 0.001
   _Editor_Foldout_Setup_LegsList: 1
   _Editor_EnsureCount: 0
   _Editor_OnValidateTrigger: 1
   _EditorAllowAutoUpdateFeetParams: 1
-  _EditorCategory: 0
-  _EditorSetupCategory: 0
-  _EditorMotionCategory: 0
+  _EditorCategory: 1
+  _EditorSetupCategory: 2
+  _EditorMotionCategory: 2
   _EditorExtraCategory: 0
   setupPose:
     MainHipsPose:
@@ -1056,7 +1122,7 @@ MonoBehaviour:
   baseTransform: {fileID: 0}
   Hips: {fileID: 6645298975682681507}
   ScaleReferenceMode: 3
-  finalScaleReference: 0.84135795
+  finalScaleReference: 0.8413578
   finalScaleReferenceSqrt: 0.1
   customScaleReferenceValue: 0.5
   DelayedInitialization: 0
@@ -1087,53 +1153,6 @@ MonoBehaviour:
   LegsAnimatorBlend: 1
   _Editor_DefaultModuleOnStart: {fileID: 11400000, guid: 7d9bd86d54a7a594cb1793f9533e2e00, type: 2}
   _Editor_LegHelperModule: {fileID: 11400000, guid: 0645fbea8059aec47aa6ae9d2c93c1d4, type: 2}
---- !u!114 &8939442088196426281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796264627696958213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb867a348dd80be4e81d5461508ab2b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterController: {fileID: 0}
-  animator: {fileID: 0}
-  isPerformingAction: 0
-  applyRootMotion: 0
-  canMove: 1
-  canRotate: 1
-  isMoving: 0
-  playerLocomotionManager: {fileID: 0}
---- !u!114 &8548358616556530893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796264627696958213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d940014a8c83864e8ec8cecd26240ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walkingSpeed: 2.8
-  runningSpeed: 4
-  rotationSpeed: 7
---- !u!114 &3327307867227481625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 796264627696958213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fb02da615597be429fb4a23cd741e34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &907195245766761231
 GameObject:
   m_ObjectHideFlags: 0
