@@ -65,6 +65,7 @@ namespace SA
         public IEnumerator LoadWorldScene()
         {
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
+            loadOperation.allowSceneActivation = false;
 
             PlayerUIManager.instance.EnablePlayerUI();
 
@@ -74,8 +75,15 @@ namespace SA
             PlayerInputManager.instance.player = player.GetComponent<PlayerManager>();
             PlayerCameraManager.instance.player = player.GetComponent<PlayerManager>();
 
+            WorldSoundEffectsManager.instance.PlayMusic("Otopor", 0.5f, 0);
+
             instance.player.LoadGameDataToCharacter(ref currentCharacterData);
             SaveGame();
+
+            yield return new WaitForSeconds(2);
+
+            loadOperation.allowSceneActivation = true;
+            PlayerUIManager.instance.FadeOut();
 
             yield return null;
         }

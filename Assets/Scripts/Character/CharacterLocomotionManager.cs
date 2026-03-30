@@ -43,6 +43,13 @@ namespace SA
 
         protected virtual void Update()
         {
+            if (PlayerUIManager.instance.loadingScreenActive)
+            {
+                character.isGrounded = true;
+                character.animator.SetBool("isGrounded", character.isGrounded);
+                return;
+            }      
+
             HandleWallDetection();
 
             HandleGroundCheck();

@@ -44,4 +44,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7a793ec1dbde145b94f23789bb2253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   worldSceneIndex: 1
+  spawnPoint: {x: 0, y: 0, z: 0}
+  saveGame: 0
+  loadGame: 0
+  currentCharacterData:
+    xPosition: 0
+    yPosition: 0
+    zPosition: 0
+    xRotation: 0
+    yRotation: 0
+    zRotation: 0
+    xCameraPosition: 0
+    yCameraPosition: 0
+    zCameraPosition: 0
+  hasSaveFile: 0
+  characterSlot:
+    xPosition: 0
+    yPosition: 0
+    zPosition: 0
+    xRotation: 0
+    yRotation: 0
+    zRotation: 0
+    xCameraPosition: 0
+    yCameraPosition: 0
+    zCameraPosition: 0
+  fileName: 

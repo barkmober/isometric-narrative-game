@@ -54,10 +54,20 @@ namespace SA
             if (newScene.buildIndex == WorldSaveGameManager.instance.GetWorldSceneIndex())
             {
                 instance.enabled = true;
+
+                PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = false;
+                
+                if(player != null)
+                    player.gameObject.GetComponent<AudioListener>().enabled = true;
             }
             else
             {
                 instance.enabled = false;
+
+                PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = false;
+
+                if (player != null)
+                    player.gameObject.GetComponent<AudioListener>().enabled = false;
             }
         }
 
