@@ -54,16 +54,13 @@ namespace SA
                 saveGame = false;
                 SaveGame();
             }
-
-            if (loadGame)
-            {
-                loadGame = false;
-                LoadGame();
-            }
         }
 
         public IEnumerator LoadWorldScene()
         {
+            PlayerUIManager.instance.playerUILoadingScreenManager.ActivateLoadingScreen();
+            PlayerUIManager.instance.isLoading = true;
+
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync(worldSceneIndex);
             loadOperation.allowSceneActivation = false;
 
@@ -74,6 +71,7 @@ namespace SA
             instance.player = player.GetComponent<PlayerManager>();
             PlayerInputManager.instance.player = player.GetComponent<PlayerManager>();
             PlayerCameraManager.instance.player = player.GetComponent<PlayerManager>();
+            instance.player.gameObject.GetComponent<AudioListener>().enabled = false;
 
             WorldSoundEffectsManager.instance.PlayMusic("Otopor", 0.5f, 0);
 
@@ -83,7 +81,6 @@ namespace SA
             yield return new WaitForSeconds(2);
 
             loadOperation.allowSceneActivation = true;
-            PlayerUIManager.instance.FadeOut();
 
             yield return null;
         }
@@ -105,6 +102,11 @@ namespace SA
             saveFileDataWriter.saveFileName = fileName;
 
             player.SaveGameDataToCharacter(ref currentCharacterData);
+
+            if(AutoSaveManager.instance != null)
+                AutoSaveManager.instance.ResetSaveTick();
+
+            PlayerUIManager.instance.ActivateSavingIcon();
 
             saveFileDataWriter.CreateNewCharacterSaveFile(currentCharacterData);
         }

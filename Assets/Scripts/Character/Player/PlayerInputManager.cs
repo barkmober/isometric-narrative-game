@@ -64,11 +64,13 @@ namespace SA
             {
                 instance.enabled = false;
 
-                PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = false;
+                PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = true;
 
                 if (player != null)
                     player.gameObject.GetComponent<AudioListener>().enabled = false;
             }
+
+            PlayerUIManager.instance.playerUILoadingScreenManager.DeactivateLoadingScreen();
         }
 
         private void OnDestroy()
