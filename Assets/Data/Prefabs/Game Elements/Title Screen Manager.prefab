@@ -4593,7 +4593,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: jjs 2
+  m_text: dead wife.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 086d1d780bcff2f418f4c5e29995503e, type: 2}
   m_sharedMaterial: {fileID: 7271383572882485660, guid: 086d1d780bcff2f418f4c5e29995503e, type: 2}
