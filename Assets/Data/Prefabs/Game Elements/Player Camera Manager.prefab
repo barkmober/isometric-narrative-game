@@ -79,8 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraPivot: {fileID: 6225638790755898407}
   camera: {fileID: 5884838393844993091}
-  smoothTime: 0.5
-  followTargetOffset: {x: 0, y: 0, z: 1.5}
+  smoothTime: 0.75
   player: {fileID: 0}
 --- !u!1 &8362016688748060231
 GameObject:
@@ -151,7 +150,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

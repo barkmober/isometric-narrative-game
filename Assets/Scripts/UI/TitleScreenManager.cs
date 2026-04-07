@@ -44,9 +44,9 @@ namespace SA
             //INITIALIZE PLAYER SETTINGS IF NOT SET BEFORE (RAN ONLY FIRST TIME PLAYING)
             if (!PlayerPrefs.HasKey("IsInitialized"))
             {
-                PlayerPrefs.SetFloat("MasterVolume", 0);
-                PlayerPrefs.SetFloat("MusicVolume", -30);
-                PlayerPrefs.SetFloat("SFXVolume", -20);
+                PlayerPrefs.SetFloat("MasterVolume", .85f);
+                PlayerPrefs.SetFloat("MusicVolume", .65f);
+                PlayerPrefs.SetFloat("SFXVolume", .8f);
 
                 PlayerPrefs.SetInt("IsInitialized", 1);
                 PlayerPrefs.Save();
@@ -69,12 +69,12 @@ namespace SA
 
         public void PlayOpenPopUpSFX()
         {
-            WorldSoundEffectsManager.instance.PlaySoundFX(WorldSoundEffectsManager.instance.popUpOpenUISFX);
+            WorldSoundEffectsManager.instance.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.popUpOpenUISFX);
         }
 
         public void PlayClosePopUpSFX()
         {
-            WorldSoundEffectsManager.instance.PlaySoundFX(WorldSoundEffectsManager.instance.popUpCloseUISFX);
+            WorldSoundEffectsManager.instance.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.popUpCloseUISFX);
         }
 
         public void PlaySelectButtonSFX()
@@ -89,29 +89,24 @@ namespace SA
 
         public void UpdateMusicVolume(float volume)
         {
-            audioMixer.SetFloat("MusicVolume", volume);
+            audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         }
 
         public void UpdateSFXVolume(float volume)
         {
-            audioMixer.SetFloat("SFXVolume", volume);
+            audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
         }
 
         public void UpdateMasterVolume(float volume)
         {
-            audioMixer.SetFloat("MasterVolume", volume);
+            audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
         }
 
         public void SaveVolume()
         {
-            audioMixer.GetFloat("MusicVolume", out float musicVolume);
-            PlayerPrefs.SetFloat("MusicVolume", musicVolume);
-
-            audioMixer.GetFloat("SFXVolume", out float sfxVolume);
-            PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
-
-            audioMixer.GetFloat("MasterVolume", out float masterVolume);
-            PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+            PlayerPrefs.SetFloat("MusicVolume", musicVolumeSlider.value);
+            PlayerPrefs.SetFloat("SFXVolume", sfxVolumeSlider.value);
+            PlayerPrefs.SetFloat("MasterVolume", masterVolumeSlider.value);
 
             PlayerPrefs.Save();
         }

@@ -17,7 +17,7 @@ namespace SA
 
         [Header("DEBUG")]
         [SerializeField] bool saveGame;
-        [SerializeField] bool loadGame;
+        [SerializeField] bool deleteGame;
 
         [Header("SAVE DATA WRITER")]
         private SaveFileDataWriter saveFileDataWriter;
@@ -53,6 +53,12 @@ namespace SA
             {
                 saveGame = false;
                 SaveGame();
+            }
+
+            if (deleteGame)
+            {
+                deleteGame = false;
+                DeleteGame();
             }
         }
 
@@ -122,6 +128,16 @@ namespace SA
             currentCharacterData = saveFileDataWriter.LoadSaveFile();
 
             StartCoroutine(LoadWorldScene());
+        }
+
+        public void DeleteGame()
+        {
+            fileName = "characterSave01";
+
+            saveFileDataWriter = new SaveFileDataWriter();
+            saveFileDataWriter.saveDataDirectoryPath = Application.persistentDataPath;
+            saveFileDataWriter.saveFileName = fileName;
+            saveFileDataWriter.DeleteSaveFile();
         }
 
         public void LoadCharacterProfile()

@@ -52,6 +52,10 @@ namespace SA
                 {
                     elapsedTime += Time.deltaTime;
                     loadingScreenCanvasGroup.alpha = Mathf.Lerp(1, 0, elapsedTime / duration);
+
+                    if(loadingScreenCanvasGroup.alpha > 0.5f)
+                        PlayerUIManager.instance.isLoading = false;
+
                     yield return null;
                 }
             }
@@ -60,6 +64,7 @@ namespace SA
             loadingScreen.SetActive(false);
             fadeLoadingScreenCoroutine = null;
             PlayerUIManager.instance.isLoading = false;
+
             yield return null;
         }
     }

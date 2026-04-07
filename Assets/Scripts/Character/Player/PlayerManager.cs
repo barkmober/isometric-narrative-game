@@ -7,6 +7,9 @@ namespace SA
         [HideInInspector] public PlayerLocomotionManager playerLocomotionManager;
         [HideInInspector] public PlayerAnimatorManager playerAnimatorManager;
 
+        [Header("Transforms")]
+        public Transform cameraFollowTarget;
+
         protected override void Awake()
         {
             base.Awake();

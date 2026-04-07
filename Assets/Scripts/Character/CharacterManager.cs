@@ -9,6 +9,7 @@ namespace SA
 
         [HideInInspector] public CharacterLocomotionManager characterLocomotionManager;
         [HideInInspector] public CharacterAnimatorManager characterAnimatorManager;
+        [HideInInspector] public CharacterSoundFXManager characterSoundFXManager;
 
         [Header("FLAGS")]
         public bool isPerformingAction = false;
@@ -29,6 +30,7 @@ namespace SA
 
             characterLocomotionManager = GetComponent<CharacterLocomotionManager>();
             characterAnimatorManager = GetComponent<CharacterAnimatorManager>();
+            characterSoundFXManager = GetComponent<CharacterSoundFXManager>();
         }
 
         protected virtual void Start()

@@ -128,6 +128,9 @@ namespace SA
 
             moveAmount = Mathf.Clamp01(Mathf.Abs(verticalMovement) + Mathf.Abs(horizontalMovement));
 
+            if (PlayerUIManager.instance.isLoading)
+                return;
+
             if (moveAmount <= 0.5f && moveAmount > 0)
             {
                 moveAmount = 0.5f;
@@ -153,6 +156,9 @@ namespace SA
             {
                 if (player.canMove && !player.isPerformingAction && !player.hasWallInFront)
                 {
+                    if (PlayerUIManager.instance.isLoading)
+                        return;
+
                     player.isSprinting = true;
                 }
                 else
@@ -171,6 +177,9 @@ namespace SA
             if (interactInput)
             {
                 interactInput = false;
+
+                if (PlayerUIManager.instance.isLoading)
+                    return;
             }
         }
     }

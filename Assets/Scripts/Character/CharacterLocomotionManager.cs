@@ -58,18 +58,12 @@ namespace SA
 
         protected virtual void HandleGroundCheck()
         {
-            character.isGrounded = Physics.CheckSphere(transform.position, groundCheckSphereRadius, groundLayer, QueryTriggerInteraction.Ignore);
+            character.isGrounded = Physics.CheckSphere(transform.position, groundCheckSphereRadius, groundLayer);
             character.animator.SetBool("isGrounded", character.isGrounded);
         }
 
         protected virtual void HandleGravity()
         {
-            if (PlayerUIManager.instance.isLoading)
-            {
-                character.isGrounded = true;
-                return;
-            }
-
             if (character.isGrounded)
             {
                 if (yVelocity.y <= 0)
@@ -96,7 +90,8 @@ namespace SA
                 }
             }
 
-            character.characterController.Move(yVelocity * Time.deltaTime);
+            if(!PlayerUIManager.instance.isLoading)
+                character.characterController.Move(yVelocity * Time.deltaTime);
         }
     }
 }

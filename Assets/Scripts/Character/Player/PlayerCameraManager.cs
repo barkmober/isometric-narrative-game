@@ -14,7 +14,6 @@ namespace SA
         private Vector3 currentVelocity;
 
         [SerializeField] float smoothTime = .25f;
-        [SerializeField] Vector3 followTargetOffset;
 
         [Header("Camera Target")]
         public PlayerManager player;
@@ -48,7 +47,8 @@ namespace SA
             if (player == null)
                 return;
 
-            Vector3 targetPosition = player.transform.position + followTargetOffset;
+            Vector3 targetPosition = player.cameraFollowTarget.position;
+
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref currentVelocity, smoothTime);
         }
     }

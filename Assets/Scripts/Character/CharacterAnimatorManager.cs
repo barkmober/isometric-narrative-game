@@ -23,15 +23,22 @@ namespace SA
 
         public void SetMovementValues(float moveAmount)
         {
-            if (character.isSprinting)
+            if (character.hasWallInFront)
             {
-                character.animator.SetFloat("MoveAmount", 2, 0.15f, Time.deltaTime);
+                character.animator.SetFloat("MoveAmount", 0.5f, 0.15f, Time.deltaTime);
             }
             else
             {
-                character.animator.SetFloat("MoveAmount", moveAmount, 0.15f, Time.deltaTime);
+                if (character.isSprinting)
+                {
+                    character.animator.SetFloat("MoveAmount", 2, 0.15f, Time.deltaTime);
+                }
+                else
+                {
+                    character.animator.SetFloat("MoveAmount", moveAmount, 0.15f, Time.deltaTime);
+                }
             }
-
+            
             character.animator.SetBool("isMoving", character.isMoving);
         }
 
