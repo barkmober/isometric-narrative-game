@@ -81,12 +81,9 @@ namespace SA
 
             WorldSoundEffectsManager.instance.PlayMusic("Otopor", 0.5f, 0);
 
-            instance.player.LoadGameDataToCharacter(ref currentCharacterData);
-            SaveGame();
-
-            yield return new WaitForSeconds(2);
-
             loadOperation.allowSceneActivation = true;
+
+            instance.player.LoadGameDataToCharacter(ref currentCharacterData);
 
             yield return null;
         }

@@ -70,7 +70,7 @@ namespace SA
                     player.gameObject.GetComponent<AudioListener>().enabled = false;
             }
 
-            PlayerUIManager.instance.playerUILoadingScreenManager.DeactivateLoadingScreen();
+            PlayerUIManager.instance.playerUILoadingScreenManager.DeactivateLoadingScreen(2.5f);
         }
 
         private void OnDestroy()

@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SA
 {
@@ -9,6 +11,9 @@ namespace SA
 
         [Header("Transforms")]
         public Transform cameraFollowTarget;
+
+        [Header("Events")]
+        public List<WorldEventSO> allFiredEvents;
 
         protected override void Awake()
         {
@@ -45,6 +50,13 @@ namespace SA
             currentCharacterData.xCameraPosition = PlayerCameraManager.instance.transform.position.x;
             currentCharacterData.yCameraPosition = PlayerCameraManager.instance.transform.position.y;
             currentCharacterData.zCameraPosition = PlayerCameraManager.instance.transform.position.z;
+
+            //EVENTS
+            currentCharacterData.eventsFired.Clear();
+            for (int i = 0; i < allFiredEvents.Count; i++)
+            {    
+                currentCharacterData.eventsFired.Add(allFiredEvents[i].eventID);
+            }
         }
 
         public void LoadGameDataToCharacter(ref CharacterSaveData currentCharacterData)
@@ -57,6 +69,23 @@ namespace SA
 
             Vector3 cameraPos = new Vector3(currentCharacterData.xCameraPosition, currentCharacterData.yCameraPosition, currentCharacterData.zCameraPosition);
             PlayerCameraManager.instance.transform.position = cameraPos;
+
+            StartCoroutine(LoadEvents(currentCharacterData));
+        }
+
+        IEnumerator LoadEvents(CharacterSaveData currentCharacterData)
+        {
+            yield return new WaitForSeconds(1);
+            //EVENTS
+            for (int i = 0; i < currentCharacterData.eventsFired.Count; i++)
+            {
+                WorldEventSO _event = WorldObjectDatabase.instance.GetWorldEventByID(currentCharacterData.eventsFired[i]);
+                _event.AddEventToList(this);
+
+                WorldEventManager.instance.FireEventByIDLoad(_event.eventID);
+            }
+
+            yield return null;
         }
     }
 }

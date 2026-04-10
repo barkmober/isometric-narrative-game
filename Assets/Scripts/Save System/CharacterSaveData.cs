@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace SA
 {
@@ -17,5 +19,13 @@ namespace SA
         public float xCameraPosition;
         public float yCameraPosition;
         public float zCameraPosition;
+
+        [Header("Events")]
+        public List<int> eventsFired;
+
+        public CharacterSaveData()
+        {
+            eventsFired = new List<int>();
+        }
     }
 }
