@@ -141,6 +141,11 @@ namespace SA
             StartCoroutine(AnimateMusicCrossfade(GetMusicTrackFromName(trackName), fadeDuration, volume));
         }
 
+        public void StopMusic()
+        {
+            StartCoroutine(AnimateMusicCrossfade(GetMusicTrackFromName(null)));
+        }
+
         IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f, float volume = 1)
         {
             float percent = 0;
@@ -159,6 +164,8 @@ namespace SA
             }
             else
             {
+                musicAudioSource.clip = null;
+                musicAudioSource.Stop();
                 yield return null;
             }
 

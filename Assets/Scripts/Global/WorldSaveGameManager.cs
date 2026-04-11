@@ -71,6 +71,7 @@ namespace SA
             loadOperation.allowSceneActivation = false;
 
             PlayerUIManager.instance.EnablePlayerUI();
+            PlayerUIManager.instance.EnablePlayerScreen();
 
             GameObject player = Instantiate(PlayerInputManager.instance.playerPrefab, spawnPoint, Quaternion.identity);
 
@@ -79,11 +80,39 @@ namespace SA
             PlayerCameraManager.instance.player = player.GetComponent<PlayerManager>();
             instance.player.gameObject.GetComponent<AudioListener>().enabled = false;
 
-            WorldSoundEffectsManager.instance.PlayMusic("Otopor", 0.5f, 0);
+            WorldSoundEffectsManager.instance.StopMusic();
 
             loadOperation.allowSceneActivation = true;
 
             instance.player.LoadGameDataToCharacter(ref currentCharacterData);
+
+            yield return new WaitForSeconds(1);
+
+            SaveGame();
+            PlayerInputManager.instance.ResumeGame();
+
+            yield return null;
+        }
+
+        public IEnumerator LoadMenuScene()
+        {
+            SaveGame();
+
+            PlayerUIManager.instance.playerUILoadingScreenManager.ActivateLoadingScreen();
+            PlayerUIManager.instance.isLoading = true;
+
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync(0);
+            loadOperation.allowSceneActivation = false;
+
+            instance.player.gameObject.GetComponent<AudioListener>().enabled = false;
+            PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = true;
+            Destroy(player.gameObject);
+
+            yield return new WaitForSeconds(2);
+            
+            loadOperation.allowSceneActivation = true;
+
+            PlayerUIManager.instance.DisablePlayerScreen();
 
             yield return null;
         }

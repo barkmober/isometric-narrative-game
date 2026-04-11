@@ -56,5 +56,14 @@ namespace SA
         {
 
         }
+
+        public void PlayLandFX()
+        {
+            GameObject dust = null;
+            dust = Instantiate(WorldCharacterEffectsManager.instance.landingDustVFX, transform.position, Quaternion.identity);
+            dust.transform.parent = null;
+
+            Destroy(dust, 3);
+        }
     }
 }

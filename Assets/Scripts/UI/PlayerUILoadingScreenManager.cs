@@ -7,6 +7,7 @@ namespace SA
 {
     public class PlayerUILoadingScreenManager : MonoBehaviour
     {
+        [Header("MENU")]
         [SerializeField] GameObject loadingScreen;
         [SerializeField] CanvasGroup loadingScreenCanvasGroup;
 

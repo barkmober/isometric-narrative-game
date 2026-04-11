@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
@@ -7,6 +9,8 @@ namespace SA
 {
     public class TitleScreenManager : MonoBehaviour
     {
+        public static TitleScreenManager instance;
+
         SaveFileDataWriter saveFileDataWriter;
 
         [Header("DEBUG")]
@@ -28,12 +32,25 @@ namespace SA
         public Slider sfxVolumeSlider;
 
         [Header("Panels")]
+        public Image blackScreen;
         public GameObject overrideSavePanel;
         public GameObject quitConfirmationPanel;
         public GameObject settingsPanel;
 
         [Header("Audio")]
         public AudioMixer audioMixer;
+
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void Start()
         {
@@ -55,7 +72,7 @@ namespace SA
             LoadVolume();
 
             //MENU MUSIC
-            WorldSoundEffectsManager.instance.PlayMusic("Otopor", 0.25f, 1);
+            WorldSoundEffectsManager.instance.PlayMusic("Lonely In Gorgeous", 0.25f, 1);
         }
 
         private void Update()
@@ -84,7 +101,7 @@ namespace SA
 
         public void PlayClickButtonSFX()
         {
-            WorldSoundEffectsManager.instance.PlaySoundFX(WorldSoundEffectsManager.instance.clickButtonUISFX);
+            WorldSoundEffectsManager.instance.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.clickButtonUISFX);
         }
 
         public void UpdateMusicVolume(float volume)

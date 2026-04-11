@@ -13,6 +13,7 @@ namespace SA
         [Header("GAME INFORMATION")]
         public GameObject playerPrefab;
         public string currentVersion = "v.00";
+        public bool gamePaused = false;
 
         [Header("INPUTS")]
         [SerializeField] Vector2 movementInput;
@@ -21,6 +22,7 @@ namespace SA
         public float horizontalMovement;
 
         [SerializeField] bool interactInput;
+        [SerializeField] bool escapeInput;
         [SerializeField] bool sprint_Input;
 
         private void Awake()
@@ -71,6 +73,7 @@ namespace SA
             }
 
             PlayerUIManager.instance.playerUILoadingScreenManager.DeactivateLoadingScreen(2.5f);
+            ResumeGame();
         }
 
         private void OnDestroy()
@@ -85,6 +88,9 @@ namespace SA
                 playerControls = new PlayerControls();
 
                 playerControls.Movement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+
+                playerControls.Actions.Interact.performed += i => interactInput = true;
+                playerControls.Actions.Escape.performed += i => escapeInput = true;
 
                 playerControls.Movement.Sprint.performed += i => sprint_Input = true;
                 playerControls.Movement.Sprint.canceled += i => sprint_Input = false;
@@ -115,14 +121,70 @@ namespace SA
 
         private void HandleInputs()
         {
+            HandlePauseInput();
+
             HandleMovementInput();
             HandleSprintInput();
 
             HandleInteractionInput();
         }
 
+        private void HandlePauseInput()
+        {
+            if (escapeInput)
+            {
+                escapeInput = false;
+
+                if (SceneManager.GetActiveScene().buildIndex != WorldSaveGameManager.instance.GetWorldSceneIndex())
+                    return;
+
+                if (PlayerUIManager.instance.isLoading)
+                    return;
+
+                if (gamePaused)
+                {
+                    if (PlayerUIManager.instance.playerUIPauseMenuManager.hasSettingsMenuOpen)
+                    {
+                        PlayerUIManager.instance.playerUIPauseMenuManager.CloseSettingsMenu();
+                    }
+                    else
+                    {
+                        ResumeGame();
+                    }
+                }
+                else
+                {
+                    PauseGame();
+                }
+            }
+        }
+
+        public void PauseGame()
+        {
+            gamePaused = true;
+            Time.timeScale = 0;
+
+            PlayerUIManager.instance.playerUIPauseMenuManager.ActivatePauseMenu();
+        }
+
+        public void ResumeGame()
+        {
+            gamePaused = false;
+            Time.timeScale = 1;
+
+            PlayerUIManager.instance.playerUIPauseMenuManager.DeactivatePauseMenu();
+        }
+
+        public void ReturnToMenu()
+        {
+            StartCoroutine(WorldSaveGameManager.instance.LoadMenuScene());
+        }
+
         private void HandleMovementInput()
         {
+            if (gamePaused)
+                return;
+
             verticalMovement = movementInput.y;
             horizontalMovement = movementInput.x;
 
@@ -152,6 +214,9 @@ namespace SA
 
         private void HandleSprintInput()
         {
+            if (gamePaused)
+                return;
+
             if (sprint_Input && player.isMoving && player.isGrounded)
             {
                 if (player.canMove && !player.isPerformingAction && !player.hasWallInFront)
@@ -177,6 +242,9 @@ namespace SA
             if (interactInput)
             {
                 interactInput = false;
+
+                if (gamePaused)
+                    return;
 
                 if (PlayerUIManager.instance.isLoading)
                     return;

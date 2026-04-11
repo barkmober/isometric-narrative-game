@@ -9,7 +9,7 @@ namespace SA
         public static WorldCharacterEffectsManager instance;
 
         [Header("FX")]
-        public GameObject bloodSplatterVFX;
+        public GameObject landingDustVFX;
         public GameObject dustFootstepVFX;
 
         private void Awake()

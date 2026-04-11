@@ -56,7 +56,8 @@ namespace SA
 
             if (randomizePitch)
             {
-                stackingAudioSource.pitch = Random.Range(-randomPitch, randomPitch);
+                stackingAudioSource.pitch = 1;
+                stackingAudioSource.pitch += Random.Range(-randomPitch, randomPitch);
             }
             else
             {

@@ -72,6 +72,9 @@ namespace SA
             {
                 hasPlayedFootstepSFX = true;
 
+                if (character.characterLocomotionManager.currentSpeed < 3)
+                    return;
+
                 PlayFootstepSFX();
                 PlayFootstepVFX(posi);
             }
@@ -79,7 +82,7 @@ namespace SA
 
         private void PlayFootstepSFX()
         {
-            character.characterSoundFXManager.PlaySoundFX(WorldSoundEffectsManager.instance.ChooseRandomFootstepSoundFX(steppedOnObject, character));
+            character.characterSoundFXManager.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.ChooseRandomFootstepSoundFX(steppedOnObject, character), .85f, true);
             timer = footStepResetTime;
         }
 

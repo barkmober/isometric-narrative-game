@@ -10,6 +10,7 @@ namespace SA
         public static PlayerUIManager instance;
 
         [HideInInspector] public PlayerUILoadingScreenManager playerUILoadingScreenManager;
+        [HideInInspector] public PlayerUIPauseMenuManager playerUIPauseMenuManager;
 
         [Header("Flags")]
         public bool isLoading;
@@ -35,11 +36,22 @@ namespace SA
             DontDestroyOnLoad(gameObject);
 
             playerUILoadingScreenManager = GetComponentInChildren<PlayerUILoadingScreenManager>();
+            playerUIPauseMenuManager = GetComponentInChildren<PlayerUIPauseMenuManager>();
         }
 
         public void ActivateSavingIcon()
         {
             saveIcon.gameObject.SetActive(true);
+        }
+
+        public void EnablePlayerScreen()
+        {
+            playerScreenCanvasGroup.alpha = 1;
+        }
+
+        public void DisablePlayerScreen()
+        {
+            playerScreenCanvasGroup.alpha = 0;
         }
 
         public void EnablePlayerUI()

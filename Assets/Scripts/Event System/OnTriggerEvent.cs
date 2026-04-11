@@ -15,9 +15,10 @@ namespace SA
             collider.enabled = false;
         }
 
-        private void Start()
+        private void Update()
         {
-            Invoke("EnableCollider", 5);
+            if (!PlayerUIManager.instance.isLoading)
+                EnableCollider();
         }
 
         private void EnableCollider()
