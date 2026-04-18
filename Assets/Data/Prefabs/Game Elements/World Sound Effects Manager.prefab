@@ -473,6 +473,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 030e6a43a7d08bd4581668d53a9808f4, type: 3}
   - {fileID: 8300000, guid: 56ea356e65429294f9098ef523fdb70b, type: 3}
   - {fileID: 8300000, guid: 5799109e817d3704889f0499d06a23be, type: 3}
+  jumpSFX: {fileID: 8300000, guid: 80d4ea7778bc3d9459d9fcea672afcee, type: 3}
+  landSFX: {fileID: 8300000, guid: 3e10d68c7f7aa854694549c916e8ba46, type: 3}
   tracks:
   - trackName: Otopor
     musicClip: {fileID: 8300000, guid: 006342570a49d794881474f83cb4edf0, type: 3}

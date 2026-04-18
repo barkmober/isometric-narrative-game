@@ -11,9 +11,19 @@ namespace SA
 
             character.isPerformingAction = false;
             character.applyRootMotion = false;
+            character.isJumping = false;
 
             character.canMove = true;
             character.canRotate = true;
+
+            if(character.willRun)
+                character.canRun = true;
+
+            if (character.willJump)
+                character.canJump = true;
+
+            if (character.willSprint)
+                character.canSprint = true;
         }
     }
 }

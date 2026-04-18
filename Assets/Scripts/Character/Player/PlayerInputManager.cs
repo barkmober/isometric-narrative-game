@@ -13,6 +13,7 @@ namespace SA
         [Header("GAME INFORMATION")]
         public GameObject playerPrefab;
         public string currentVersion = "v.00";
+        public Texture2D cursorIcon;
         public bool gamePaused = false;
 
         [Header("INPUTS")]
@@ -21,8 +22,10 @@ namespace SA
         public float verticalMovement;
         public float horizontalMovement;
 
-        [SerializeField] bool interactInput;
-        [SerializeField] bool escapeInput;
+        [SerializeField] bool interact_Input;
+        [SerializeField] bool escape_Input;
+
+        [SerializeField] bool jump_Input;
         [SerializeField] bool sprint_Input;
 
         private void Awake()
@@ -89,8 +92,9 @@ namespace SA
 
                 playerControls.Movement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
 
-                playerControls.Actions.Interact.performed += i => interactInput = true;
-                playerControls.Actions.Escape.performed += i => escapeInput = true;
+                playerControls.Actions.Jump.performed += i => jump_Input = true;
+                playerControls.Actions.Interact.performed += i => interact_Input = true;
+                playerControls.Actions.Escape.performed += i => escape_Input = true;                
 
                 playerControls.Movement.Sprint.performed += i => sprint_Input = true;
                 playerControls.Movement.Sprint.canceled += i => sprint_Input = false;
@@ -127,13 +131,14 @@ namespace SA
             HandleSprintInput();
 
             HandleInteractionInput();
+            HandleJumpingInput();
         }
 
         private void HandlePauseInput()
         {
-            if (escapeInput)
+            if (escape_Input)
             {
-                escapeInput = false;
+                escape_Input = false;
 
                 if (SceneManager.GetActiveScene().buildIndex != WorldSaveGameManager.instance.GetWorldSceneIndex())
                     return;
@@ -209,6 +214,21 @@ namespace SA
             else
             {
                 player.isMoving = false;
+                player.isRunning = false;
+            }
+
+            if (player.isMoving)
+            {
+                if (player.canRun)
+                {
+                    player.isRunning = true;
+                    player.isWalking = false;
+                }
+                else
+                {
+                    player.isWalking = true;
+                    player.isRunning = false;
+                }
             }
         }
 
@@ -217,6 +237,12 @@ namespace SA
             if (gamePaused)
                 return;
 
+            if (player.isPerformingAction)
+            {
+                player.isSprinting = false;
+                return;
+            }
+                
             if (sprint_Input && player.isMoving && player.isGrounded)
             {
                 if (player.canMove && !player.isPerformingAction && !player.hasWallInFront)
@@ -239,15 +265,34 @@ namespace SA
 
         private void HandleInteractionInput()
         {
-            if (interactInput)
+            if (interact_Input)
             {
-                interactInput = false;
+                interact_Input = false;
 
                 if (gamePaused)
                     return;
 
                 if (PlayerUIManager.instance.isLoading)
                     return;
+            }
+        }
+
+        private void HandleJumpingInput()
+        {
+            if (jump_Input)
+            {
+                jump_Input = false;
+
+                if (gamePaused)
+                    return;
+
+                if (PlayerUIManager.instance.isLoading)
+                    return;
+
+                if (!player.canJump)
+                    return;
+
+                player.playerLocomotionManager.AttemptToParkour();
             }
         }
     }

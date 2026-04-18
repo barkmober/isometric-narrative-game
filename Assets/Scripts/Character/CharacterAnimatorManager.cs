@@ -23,22 +23,49 @@ namespace SA
 
         public void SetMovementValues(float moveAmount)
         {
-            if (character.hasWallInFront)
+            if (character.canRun)
             {
-                character.animator.SetFloat("MoveAmount", 0.5f, 0.15f, Time.deltaTime);
-            }
-            else
-            {
-                if (character.isSprinting)
+                if (character.canSprint)
                 {
-                    character.animator.SetFloat("MoveAmount", 2, 0.15f, Time.deltaTime);
+                    if (character.isSprinting)
+                    {
+                        character.animator.SetFloat("MoveAmount", 2, 0.15f, Time.deltaTime);
+                    }
+                    else
+                    {
+                        character.animator.SetFloat("MoveAmount", 1, 0.15f, Time.deltaTime);
+                    }
                 }
                 else
                 {
-                    character.animator.SetFloat("MoveAmount", moveAmount, 0.15f, Time.deltaTime);
+                    character.animator.SetFloat("MoveAmount", 1, 0.15f, Time.deltaTime);
                 }
             }
-            
+            else
+            {
+                if (character.canSprint)
+                {
+                    if (character.isSprinting)
+                    {
+                        character.animator.SetFloat("MoveAmount", 1, 0.15f, Time.deltaTime);
+                    }
+                    else
+                    {
+                        character.animator.SetFloat("MoveAmount", .5f, 0.15f, Time.deltaTime);
+                    }
+                }
+                else
+                {
+                    character.animator.SetFloat("MoveAmount", 1, 0.15f, Time.deltaTime);
+                }
+            }
+
+            if(character.isPerformingAction)
+                character.animator.SetFloat("MoveAmount", 0, 0.15f, Time.deltaTime);
+
+            if (character.hasWallInFront)
+                character.animator.SetFloat("MoveAmount", .5f, 0.15f, Time.deltaTime);
+
             character.animator.SetBool("isMoving", character.isMoving);
         }
 
@@ -64,6 +91,8 @@ namespace SA
             dust.transform.parent = null;
 
             Destroy(dust, 3);
+
+            character.characterSoundFXManager.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.landSFX);
         }
     }
 }

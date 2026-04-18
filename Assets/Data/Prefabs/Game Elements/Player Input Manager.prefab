@@ -47,8 +47,12 @@ MonoBehaviour:
   player: {fileID: 0}
   playerPrefab: {fileID: 796264627696958213, guid: e90183a8b063c0d46b1fa2a5fa859c84, type: 3}
   currentVersion: v.00
+  cursorIcon: {fileID: 2800000, guid: 30ba22e015266e9408249b4f83c9e04e, type: 3}
+  gamePaused: 0
   movementInput: {x: 0, y: 0}
   moveAmount: 0
   verticalMovement: 0
   horizontalMovement: 0
   interactInput: 0
+  escapeInput: 0
+  sprint_Input: 0

@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de6a961d1f37a0541b358c7e77107b63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpingDustVFX: {fileID: 1173262663564242, guid: f81ea73a47d926143906b9d543948dc0, type: 3}
   landingDustVFX: {fileID: 1698068915230344, guid: 05f7c156786bd024e8da3bb1a4b8aa09, type: 3}
   dustFootstepVFX: {fileID: 1972684102877986055, guid: df5fa7d38a548774fa6d06d7efa41dd1, type: 3}

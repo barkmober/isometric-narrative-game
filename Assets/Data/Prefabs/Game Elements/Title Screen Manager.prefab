@@ -543,7 +543,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.5
 --- !u!114 &4289376526226324997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -621,18 +621,6 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 903531066199833226}
-          m_TargetAssemblyTypeName: SA.TitleScreenManager, Assembly-CSharp
-          m_MethodName: PlayClickButtonSFX
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
         - m_Target: {fileID: 903531066199833226}
           m_TargetAssemblyTypeName: SA.TitleScreenManager, Assembly-CSharp
           m_MethodName: OpenSettingsMenu
@@ -908,7 +896,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.5
 --- !u!114 &8754352253293055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1511,7 +1499,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.5
 --- !u!114 &254071413484608798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,7 +1647,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -30, y: 5}
+  m_AnchoredPosition: {x: -30, y: 15}
   m_SizeDelta: {x: 80, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3795700369991373549
@@ -3481,10 +3469,10 @@ RectTransform:
   - {fileID: 1307527561657245535}
   m_Father: {fileID: 4863704274469315978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 350}
-  m_SizeDelta: {x: 500, y: 500}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 250, y: 250}
+  m_SizeDelta: {x: 500, y: 350.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &516443411291167531
 MonoBehaviour:
@@ -4205,7 +4193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4326071715846915212}
   - component: {fileID: 3818786623818286507}
-  - component: {fileID: 8004795291952912482}
+  - component: {fileID: 1295374936856781582}
   m_Layer: 5
   m_Name: BG
   m_TagString: Untagged
@@ -4240,36 +4228,33 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7027963965573461035}
   m_CullTransparentMesh: 1
---- !u!114 &8004795291952912482
+--- !u!114 &1295374936856781582
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7027963965573461035}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.043137256, g: 0.05882353, b: 0.101960786, a: 1}
-  m_RaycastTarget: 0
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Texture: {fileID: 8400000, guid: fe9e17c115d4545448a7b2de2d906a40, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &7241332103198200297
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,9 +4634,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 4863704274469315978}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -350}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 260, y: 0}
   m_SizeDelta: {x: 750, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7569857221672328195
@@ -4684,8 +4669,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: HALCYON
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 086d1d780bcff2f418f4c5e29995503e, type: 2}
-  m_sharedMaterial: {fileID: 7271383572882485660, guid: 086d1d780bcff2f418f4c5e29995503e, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c45fceb1f1441554f835aee597e0bef5, type: 2}
+  m_sharedMaterial: {fileID: -8282967819486996013, guid: c45fceb1f1441554f835aee597e0bef5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5617,7 +5602,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.5
 --- !u!114 &6509645113462916705
 MonoBehaviour:
   m_ObjectHideFlags: 0

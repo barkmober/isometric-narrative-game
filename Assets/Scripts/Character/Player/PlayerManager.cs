@@ -33,8 +33,6 @@ namespace SA
         protected override void Update()
         {
             base.Update();
-
-            playerLocomotionManager.HandleAllMovement();
         }
 
         public void SaveGameDataToCharacter(ref CharacterSaveData currentCharacterData)

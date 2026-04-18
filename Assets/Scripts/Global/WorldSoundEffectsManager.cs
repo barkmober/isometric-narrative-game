@@ -23,6 +23,8 @@ namespace SA
         public AudioClip[] footStepsDirt;
         public AudioClip[] footStepsStone;
         public AudioClip[] footStepsGrass;
+        public AudioClip jumpSFX;
+        public AudioClip landSFX;
 
         [Header("MUSIC TRACKS")]
         public MusicTrack[] tracks;
@@ -143,7 +145,7 @@ namespace SA
 
         public void StopMusic()
         {
-            StartCoroutine(AnimateMusicCrossfade(GetMusicTrackFromName(null)));
+            StartCoroutine(AnimateMusicCrossfade(GetMusicTrackFromName(null), 1));
         }
 
         IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f, float volume = 1)

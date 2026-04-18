@@ -8,7 +8,7 @@ namespace SA
 
         [Header("")]
         [SerializeField] LayerMask characterLayer;
-        [SerializeField] LayerMask damageableCharacterLayer;
+        [SerializeField] LayerMask obstacleLayer;
         [SerializeField] LayerMask environmentLayer;
 
         private void Awake()
@@ -28,6 +28,11 @@ namespace SA
         public LayerMask GetEnviroLayers()
         {
             return environmentLayer;
+        }
+
+        public LayerMask GetObstacleLayers()
+        {
+            return obstacleLayer;
         }
     }
 }

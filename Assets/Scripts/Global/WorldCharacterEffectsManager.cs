@@ -9,6 +9,7 @@ namespace SA
         public static WorldCharacterEffectsManager instance;
 
         [Header("FX")]
+        public GameObject jumpingDustVFX;
         public GameObject landingDustVFX;
         public GameObject dustFootstepVFX;
 

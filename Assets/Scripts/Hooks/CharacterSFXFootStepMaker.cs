@@ -47,9 +47,6 @@ namespace SA
             if (character.isMoving == false)
                 return;
 
-            if (character.characterLocomotionManager.currentSpeed < 3)
-                return;
-
             RaycastHit hit;
 
             if (Physics.Raycast(transform.position, character.transform.TransformDirection(Vector3.down), out hit, distanceToGround, WorldUtilityManager.instance.GetEnviroLayers()))
@@ -72,9 +69,6 @@ namespace SA
             {
                 hasPlayedFootstepSFX = true;
 
-                if (character.characterLocomotionManager.currentSpeed < 3)
-                    return;
-
                 PlayFootstepSFX();
                 PlayFootstepVFX(posi);
             }
@@ -82,12 +76,23 @@ namespace SA
 
         private void PlayFootstepSFX()
         {
-            character.characterSoundFXManager.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.ChooseRandomFootstepSoundFX(steppedOnObject, character), .85f, true);
-            timer = footStepResetTime;
+            if (character.characterLocomotionManager.currentSpeed <= character.characterLocomotionManager.GetWalkingSpeed())
+            {
+                character.characterSoundFXManager.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.ChooseRandomFootstepSoundFX(steppedOnObject, character), .5f, true);
+                timer = footStepResetTime;
+            }
+            else
+            {
+                character.characterSoundFXManager.PlaySoundFXWithStacking(WorldSoundEffectsManager.instance.ChooseRandomFootstepSoundFX(steppedOnObject, character), .85f, true);
+                timer = footStepResetTime;
+            }     
         }
 
         private void PlayFootstepVFX(Vector3 pos)
         {
+            if (character.characterLocomotionManager.currentSpeed <= character.characterLocomotionManager.GetWalkingSpeed())
+                return;
+
             GameObject dust = null;
             dust = Instantiate(WorldCharacterEffectsManager.instance.dustFootstepVFX, pos, Quaternion.identity);
             dust.transform.parent = null;
