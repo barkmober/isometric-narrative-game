@@ -1087,6 +1087,7 @@ MonoBehaviour:
   playerUICanvasGroup: {fileID: 217576421932185380}
   playerScreenCanvasGroup: {fileID: 1454058685570216450}
   saveIcon: {fileID: 1668951214312437835}
+  playerScreen: {fileID: 8972601864107525341}
 --- !u!1 &4165227994955049528
 GameObject:
   m_ObjectHideFlags: 0

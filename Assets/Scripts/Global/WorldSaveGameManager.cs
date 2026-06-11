@@ -105,7 +105,7 @@ namespace SA
             loadOperation.allowSceneActivation = false;
 
             instance.player.gameObject.GetComponent<AudioListener>().enabled = false;
-            PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = true;
+            PlayerCameraManager.instance.mainCamera.GetComponent<AudioListener>().enabled = true;
             Destroy(player.gameObject);
 
             yield return new WaitForSeconds(2);

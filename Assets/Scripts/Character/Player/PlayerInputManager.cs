@@ -60,7 +60,7 @@ namespace SA
             {
                 instance.enabled = true;
 
-                PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = false;
+                PlayerCameraManager.instance.mainCamera.GetComponent<AudioListener>().enabled = false;
                 
                 if(player != null)
                     player.gameObject.GetComponent<AudioListener>().enabled = true;
@@ -69,7 +69,7 @@ namespace SA
             {
                 instance.enabled = false;
 
-                PlayerCameraManager.instance.camera.GetComponent<AudioListener>().enabled = true;
+                PlayerCameraManager.instance.mainCamera.GetComponent<AudioListener>().enabled = true;
 
                 if (player != null)
                     player.gameObject.GetComponent<AudioListener>().enabled = false;

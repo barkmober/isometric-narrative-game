@@ -77,10 +77,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77bf2284ed394904e82d0535c005005e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPivot: {fileID: 6225638790755898407}
-  camera: {fileID: 5884838393844993091}
-  smoothTime: 0.75
   player: {fileID: 0}
+  mainCamera: {fileID: 5884838393844993091}
+  followSpeed: 1
+  followY: 1
+  rtWidth: 480
+  rtHeight: 270
 --- !u!1 &8362016688748060231
 GameObject:
   m_ObjectHideFlags: 0

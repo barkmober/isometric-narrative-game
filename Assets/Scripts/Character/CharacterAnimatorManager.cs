@@ -73,7 +73,7 @@ namespace SA
         {
             character.applyRootMotion = applyRootMotion;
             character.isPerformingAction = isPerformingAction;
-            character.animator.CrossFade(targetAnimation, .15f);
+            character.animator.CrossFade(targetAnimation, .1f);
 
             character.canMove = canMove;
             character.canRotate = canRotate;

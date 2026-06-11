@@ -17,6 +17,6 @@ MonoBehaviour:
   minHeight: 0.25
   maxHeight: 0.7
   targetMatching: 1
-  matchBodyPart: 3
+  matchBodyPart: 2
   matchStartTime: 0.3
-  matchTargetTime: 0.51
+  matchTargetTime: 0.7

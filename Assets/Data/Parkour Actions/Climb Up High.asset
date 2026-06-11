@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8bdd3fd7a14417c42afd7c449e242285, type: 3}
-  m_Name: Climb Up
+  m_Name: Climb Up High
   m_EditorClassIdentifier: 
   animName: player_climb_up
   rotateToObstacle: 1
-  minHeight: 36.24
-  maxHeight: 3
-  targetMatching: 0
-  matchBodyPart: 3
-  matchStartTime: 0.3
-  matchTargetTime: 0.51
+  minHeight: 1
+  maxHeight: 2
+  targetMatching: 1
+  matchBodyPart: 0
+  matchStartTime: 0.17
+  matchTargetTime: 0.8

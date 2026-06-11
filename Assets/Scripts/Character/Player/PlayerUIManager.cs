@@ -22,6 +22,9 @@ namespace SA
         [Header("Icons")]
         public Image saveIcon;
 
+        [Header("Player Screen")]
+        public RawImage playerScreen;
+
         private void Awake()
         {
             if (instance == null)

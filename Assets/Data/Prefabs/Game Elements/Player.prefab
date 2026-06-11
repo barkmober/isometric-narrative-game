@@ -460,8 +460,8 @@ MonoBehaviour:
   maxAerialSpeed: 1.5
   maxJumpingSpeed: 2.5
   maxWalkingSpeed: 2
-  maxRunningSpeed: 3.75
-  maxSprintingSpeed: 6.5
+  maxRunningSpeed: 3.25
+  maxSprintingSpeed: 4.5
   rotationSpeed: 6
   accelerationFactor: 8
   decelerationFactor: 10
@@ -480,7 +480,7 @@ MonoBehaviour:
   parkourActions:
   - {fileID: 11400000, guid: 30e97041fd9c8594fb64b73bdb2eda29, type: 2}
   - {fileID: 11400000, guid: d19a7cbe57a11c34385b9d5c9f2a7e6b, type: 2}
-  - {fileID: 11400000, guid: aa965b68a09cb7d4d816da23fe672603, type: 2}
+  - {fileID: 11400000, guid: b978ee69f9d357345868be937144ce92, type: 2}
 --- !u!114 &3327307867227481625
 MonoBehaviour:
   m_ObjectHideFlags: 0

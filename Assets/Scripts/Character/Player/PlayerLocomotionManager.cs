@@ -27,6 +27,7 @@ namespace SA
             base.Update();
 
             CalculateSpeed();
+            player.animator.SetBool("isJumping", player.isJumping);
 
             if (player.isJumping)
                 return;
@@ -104,8 +105,8 @@ namespace SA
             if (!player.isGrounded)
                 return;
 
-            moveDirection = PlayerCameraManager.instance.camera.transform.forward * PlayerInputManager.instance.verticalMovement;
-            moveDirection += PlayerCameraManager.instance.camera.transform.right * PlayerInputManager.instance.horizontalMovement;
+            moveDirection = PlayerCameraManager.instance.mainCamera.transform.forward * PlayerInputManager.instance.verticalMovement;
+            moveDirection += PlayerCameraManager.instance.mainCamera.transform.right * PlayerInputManager.instance.horizontalMovement;
             moveDirection.Normalize();
             moveDirection.y = 0;
 
@@ -123,8 +124,8 @@ namespace SA
 
             Vector3 freeFallDirection;
 
-            freeFallDirection = PlayerCameraManager.instance.camera.transform.forward * PlayerInputManager.instance.verticalMovement;
-            freeFallDirection += PlayerCameraManager.instance.camera.transform.right * PlayerInputManager.instance.horizontalMovement;
+            freeFallDirection = PlayerCameraManager.instance.mainCamera.transform.forward * PlayerInputManager.instance.verticalMovement;
+            freeFallDirection += PlayerCameraManager.instance.mainCamera.transform.right * PlayerInputManager.instance.horizontalMovement;
             freeFallDirection.y = 0;
 
             player.characterController.Move(freeFallDirection * maxAerialSpeed * Time.deltaTime);
@@ -137,8 +138,8 @@ namespace SA
 
             targetRotationDirection = Vector3.zero;
 
-            targetRotationDirection = PlayerCameraManager.instance.camera.transform.forward * PlayerInputManager.instance.verticalMovement;
-            targetRotationDirection += PlayerCameraManager.instance.camera.transform.right * PlayerInputManager.instance.horizontalMovement;
+            targetRotationDirection = PlayerCameraManager.instance.mainCamera.transform.forward * PlayerInputManager.instance.verticalMovement;
+            targetRotationDirection += PlayerCameraManager.instance.mainCamera.transform.right * PlayerInputManager.instance.horizontalMovement;
             targetRotationDirection.Normalize();
             targetRotationDirection.y = 0;
 
@@ -181,36 +182,43 @@ namespace SA
 
         IEnumerator DoParkourAction(ParkourAction action)
         {
-            var animState = player.animator.GetNextAnimatorStateInfo(1);
-
             player.playerAnimatorManager.PlayTargetActionAnimation(action.animName, true);
             player.isJumping = true;
 
+            yield return null;
+
+            while (player.animator.IsInTransition(1))
+            {
+                yield return null;
+            }
+
+            var animState = player.animator.GetCurrentAnimatorStateInfo(1);
             float timer = 0;
 
             while (timer <= animState.length)
             {
                 timer += Time.deltaTime;
 
-                if (action.rotateToObstacle)
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, action.TargetRotation, 30 * Time.deltaTime);
+                if (action.rotateToObstacle && !player.isMoving)
+                    transform.rotation = action.TargetRotation;
 
-                if (action.targetMatching)
+                if (action.targetMatching && !player.animator.IsInTransition(1))
+                {
                     MatchTarget(action);
+                }
 
                 yield return null;
             }
 
-            yield return new WaitForSeconds(animState.length);
-
-            //player.isJumping = false;
-
-            yield return null;
+            player.isJumping = false;
         }
 
         void MatchTarget(ParkourAction action)
         {
-            if (player.animator.isMatchingTarget)
+            if (player.animator.IsInTransition(1) || player.animator.isMatchingTarget)
+                return;
+
+            if (!player.animator.GetCurrentAnimatorStateInfo(1).IsName(action.animName))
                 return;
 
             player.animator.MatchTarget(action.MatchPos, transform.rotation, action.matchBodyPart, new MatchTargetWeightMask(new Vector3(0, 1, 0), 0), action.matchStartTime, action.matchTargetTime);
