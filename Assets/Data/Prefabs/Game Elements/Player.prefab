@@ -470,9 +470,9 @@ MonoBehaviour:
   maxJumpHeight: 1.5
   jumpMomentumMultiplier: 2
   gravityForce: -20
-  groundedYVelocity: -20
+  groundedYVelocity: -2
   fallStartYVelocity: -5
-  groundCheckSphereRadius: 0.25
+  groundCheckSphereRadius: 0.23
   inAirTimer: 0
   forwardRayOffset: {x: 0, y: 0.25, z: 0}
   forwardRayLength: 0.8
@@ -977,7 +977,7 @@ MonoBehaviour:
   AnimationFloorLevel: 0.001
   _Editor_Foldout_Setup_LegsList: 1
   _Editor_EnsureCount: 0
-  _Editor_OnValidateTrigger: 1
+  _Editor_OnValidateTrigger: 0
   _EditorAllowAutoUpdateFeetParams: 1
   _EditorCategory: 0
   _EditorSetupCategory: 1
