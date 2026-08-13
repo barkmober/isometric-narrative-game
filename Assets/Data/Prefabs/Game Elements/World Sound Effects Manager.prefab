@@ -478,5 +478,5 @@ MonoBehaviour:
   tracks:
   - trackName: Otopor
     musicClip: {fileID: 8300000, guid: 006342570a49d794881474f83cb4edf0, type: 3}
-  - trackName: Lonely In Gorgeous
-    musicClip: {fileID: 8300000, guid: 3f0fb07c0fcf170459616efe623ee06d, type: 3}
+  - trackName: Velvet Silence
+    musicClip: {fileID: 8300000, guid: 30dbe30e25d8d0849a064dc4669e59e8, type: 3}

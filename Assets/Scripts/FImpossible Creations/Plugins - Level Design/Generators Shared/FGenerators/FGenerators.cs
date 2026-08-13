@@ -114,7 +114,7 @@ namespace FIMSpace.Generating
             else
                 GameObject.Destroy(obj);
 #else
-                GameObject.Destroy(obj);
+            GameObject.Destroy(obj);
 #endif
         }
 
@@ -185,7 +185,7 @@ namespace FIMSpace.Generating
 
             public bool GetRandomFlip()
             {
-                return FGenerators.GetRandomFlip( random);
+                return FGenerators.GetRandomFlip(random);
             }
 
             #endregion
@@ -1082,7 +1082,7 @@ namespace FIMSpace.Generating
             return
                 _editorUiScaling;
 #else
-return 1f;
+            return 1f;
 #endif
         }
 
@@ -1185,7 +1185,7 @@ return 1f;
         [SerializeField] private Collider MainCollider;
         private Collider tempReplaceCollider;
 
-        private int id;
+        private EntityId id;
         public int subID;
         private Texture tex;
 
@@ -1203,9 +1203,9 @@ return 1f;
                     return null;
                 }
 
-                if (tex == null || id != Prefab.GetInstanceID())
+                if (tex == null || id != Prefab.GetEntityId())
                 {
-                    id = Prefab.GetInstanceID();
+                    id = Prefab.GetEntityId();
 #if UNITY_EDITOR
                     tex = AssetPreview.GetAssetPreview(Prefab);
 #endif

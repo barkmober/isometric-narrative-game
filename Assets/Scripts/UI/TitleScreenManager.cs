@@ -72,7 +72,7 @@ namespace SA
             LoadVolume();
 
             //MENU MUSIC
-            WorldSoundEffectsManager.instance.PlayMusic("Lonely In Gorgeous", 0.25f, 1);
+            WorldSoundEffectsManager.instance.PlayMusic("Velvet Silence", 0.25f, 1);
         }
 
         private void Update()

@@ -459,10 +459,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAerialSpeed: 1.5
   maxJumpingSpeed: 2.5
-  maxWalkingSpeed: 2
-  maxRunningSpeed: 3.25
+  maxWalkingSpeed: 1.7
+  maxRunningSpeed: 3
   maxSprintingSpeed: 4.5
-  rotationSpeed: 6
+  rotationSpeed: 6.5
   accelerationFactor: 8
   decelerationFactor: 10
   currentSpeed: 0
@@ -634,22 +634,6 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     AlignWithDesiredMoveDirection: 0
-  UseHips: 1
-  HipsHeightStepBlend: 1
-  HipsHeightStepSpeed: 0.7
-  HipsAdjustStyle: 0
-  StabilizeCenterOfMass: 0.45
-  AnimationIsStablePose: 0.75
-  StabilizingSpeed: 0.375
-  PushHipsOnLegMove: 0.1
-  NormalizePush: 0
-  PushReactionSpeed: 0.3
-  PushYBlend: 1
-  HipsStretchPreventer: 0.15
-  StretchPreventerSpeed: 0.8
-  StabilizeOnIsMoving: 0.5
-  _Hips_Modules_ExtraWOffset: {x: 0, y: 0, z: 0}
-  _Hips_Modules_ExtraRotOffset: {x: 0, y: 0, z: 0}
   ExtraHipsHubs: []
   HipsHubsHandling: 1
   HipsHubsBlend: 1
@@ -694,11 +678,28 @@ MonoBehaviour:
       Damping: 10
       BrakePower: 0.2
   StabilityAlgorithm: 1
+  UseHips: 1
+  HipsHeightStepBlend: 1
+  HipsHeightStepSpeed: 0.7
+  HipsAdjustStyle: 0
+  StabilizeCenterOfMass: 0.45
+  AnimationIsStablePose: 0.75
+  StabilizingSpeed: 0.375
+  PushHipsOnLegMove: 0.1
+  NormalizePush: 0
+  PushReactionSpeed: 0.3
+  PushYBlend: 1
+  HipsStretchPreventer: 0.15
+  StretchPreventerSpeed: 0.8
+  StabilizeOnIsMoving: 0.5
+  _Hips_Modules_ExtraWOffset: {x: 0, y: 0, z: 0}
+  _Hips_Modules_ExtraRotOffset: {x: 0, y: 0, z: 0}
   Legs:
   - G_CustomForceAttach: 0
     G_CustomForceNOTDetach: 0
     G_CustomForceDetach: 0
     G_CustomForceNOTAttach: 0
+    _FinalIKPos: {x: 0, y: 0, z: 0}
     Owner: {fileID: 4047721443808417917}
     LegBlendWeight: 1
     LegMoveSpeedMultiplier: 1
@@ -725,11 +726,11 @@ MonoBehaviour:
     AnkleForward: {x: -0.019545346, y: 0.7567797, z: 0.6533779}
     FootMiddlePosition: 0.5
     AnkleYawCorrection: 0
-    _FinalIKPos: {x: 0, y: 0, z: 0}
   - G_CustomForceAttach: 0
     G_CustomForceNOTDetach: 0
     G_CustomForceDetach: 0
     G_CustomForceNOTAttach: 0
+    _FinalIKPos: {x: 0, y: 0, z: 0}
     Owner: {fileID: 4047721443808417917}
     LegBlendWeight: 1
     LegMoveSpeedMultiplier: 1
@@ -756,7 +757,6 @@ MonoBehaviour:
     AnkleForward: {x: 0.01955103, y: 0.7567832, z: 0.6533735}
     FootMiddlePosition: 0.5
     AnkleYawCorrection: 0
-    _FinalIKPos: {x: 0, y: 0, z: 0}
   BaseLegAnimating:
     StepMoveDuration: 0.375
     MoveToGoalCurve:
@@ -977,7 +977,7 @@ MonoBehaviour:
   AnimationFloorLevel: 0.001
   _Editor_Foldout_Setup_LegsList: 1
   _Editor_EnsureCount: 0
-  _Editor_OnValidateTrigger: 0
+  _Editor_OnValidateTrigger: 1
   _EditorAllowAutoUpdateFeetParams: 1
   _EditorCategory: 0
   _EditorSetupCategory: 1
@@ -1288,6 +1288,8 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1309,9 +1311,11 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -2351,6 +2355,8 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2372,9 +2378,11 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -3757,6 +3765,8 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -3778,9 +3788,11 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -4699,6 +4711,8 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4720,9 +4734,11 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
@@ -5298,6 +5314,8 @@ SkinnedMeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -5319,9 +5337,11 @@ SkinnedMeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
   m_UpdateWhenOffscreen: 0

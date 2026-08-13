@@ -2,9 +2,7 @@
 using UnityEditor;
 #endif
 using UnityEngine;
-
 /* Code made by LaneFox from Unity Community Forum */
-
 #if UNITY_EDITOR
 [InitializeOnLoad]
 #endif
@@ -13,21 +11,24 @@ public class FHierarchyIcons
     static FHierarchyIcons()
     {
 #if UNITY_EDITOR
-        EditorApplication.hierarchyWindowItemOnGUI += EvaluateIcons;
+        EditorApplication.hierarchyWindowItemByEntityIdOnGUI += EvaluateIcons;
 #endif
     }
-
-    private static void EvaluateIcons(int instanceId, Rect selectionRect)
+    private static void EvaluateIcons(
+#if UNITY_EDITOR
+        EntityId instanceId,
+#else
+        int instanceId,
+#endif
+        Rect selectionRect)
     {
 #if UNITY_EDITOR
-        GameObject go = EditorUtility.InstanceIDToObject(instanceId) as GameObject;
+        GameObject go = EditorUtility.EntityIdToObject(instanceId) as GameObject;
         if (go == null) return;
-
         IFHierarchyIcon slotCon = go.GetComponent<IFHierarchyIcon>();
         if (slotCon != null) DrawIcon(slotCon.EditorIconPath, selectionRect);
 #endif
     }
-
     private static void DrawIcon(string texName, Rect rect)
     {
 #if UNITY_EDITOR
@@ -36,7 +37,6 @@ public class FHierarchyIcons
         GUI.DrawTexture(r, GetTex(texName));
 #endif
     }
-
     private static Texture2D GetTex(string name)
     {
 #if UNITY_EDITOR
@@ -46,18 +46,14 @@ public class FHierarchyIcons
 #endif
     }
 }
-
 public interface IFHierarchyIcon
 {
     string EditorIconPath { get; }
 }
-
 /*
-
 {...}
     public class ItemUiSlot : MonoBehaviour, IDropHandler, FIHierarchyIcon
     {
         public string EditorIconPath { get { return "LogoGrey";  } }
 {...}
-
 */

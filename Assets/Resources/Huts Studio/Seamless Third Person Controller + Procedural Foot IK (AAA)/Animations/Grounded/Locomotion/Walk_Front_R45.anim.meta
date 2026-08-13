@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5db79abdf3ee1d44b8a83cff66a05de4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 388398
+  packageName: Seamless Third Person Controller (Foot IK)
+  packageVersion: 1.0
+  assetPath: Assets/Huts Studio/Seamless Third Person Controller + Procedural Foot
+    IK (AAA)/Animations/Grounded/Locomotion/Walk_Front_R45.anim
+  uploadId: 939382

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 71c23ca1e04cc824c914f87806fc3dca
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 388398
+  packageName: Seamless Third Person Controller (Foot IK)
+  packageVersion: 1.0
+  assetPath: Assets/Huts Studio/Seamless Third Person Controller + Procedural Foot
+    IK (AAA)/Animations/Grounded/TurnInPlace/Idle_TurnL_90.anim
+  uploadId: 939382

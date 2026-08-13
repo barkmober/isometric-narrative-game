@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d4cb0ce6138fd9e4ea2339d053463387
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 388398
+  packageName: Seamless Third Person Controller (Foot IK)
+  packageVersion: 1.0
+  assetPath: Assets/Huts Studio/Seamless Third Person Controller + Procedural Foot
+    IK (AAA)/Animations/Grounded/StopTree/WalkStop_Front_L.anim
+  uploadId: 939382
